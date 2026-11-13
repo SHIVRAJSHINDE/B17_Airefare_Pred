@@ -1,0 +1,25 @@
+-----------------------------------------------------
+git add README.md
+git commit -m "first commit"
+git branch -M main
+
+
+-----------------------------------------------------
+git init
+git remote add origin your_Repo_Name
+git pull origin main
+
+git add .
+git commit -m "Fi Commit"
+git branch -M main
+git push -u origin main
+
+
+--------------------------------------------------------------
+create ENV
+  pip install virtualenv
+  virtualenv -p python3 myEnv_01
+  myEnv_01\Scripts\activate
+
+
+
