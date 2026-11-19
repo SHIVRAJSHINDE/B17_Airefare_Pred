@@ -22,4 +22,15 @@ create ENV
   myEnv_01\Scripts\activate
 
 
+project
+- Local ENV
+- STEPS
+  - Training pipeline
+    - training
+    - CLEANING
+    - Transformatoin(catetorical data to Number)
+    - Training(Actaul Traing)\
+  - Prediction pipeline
+
+
 
