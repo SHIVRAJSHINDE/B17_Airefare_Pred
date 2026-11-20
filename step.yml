@@ -34,3 +34,7 @@ project
 
 
 
+git rm -r --cached Airtifacts
+git add .gitignore
+git commit -m "Ignore Artifacts folder"
+git push
