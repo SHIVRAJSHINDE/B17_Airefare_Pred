@@ -10,8 +10,25 @@ from sklearn.ensemble import RandomForestRegressor, AdaBoostRegressor,GradientBo
 
 class Trainning:
     def __init__(self):
-        self.models = {"GraBoostRegressor":GradientBoostingRegressor()}
-        self.params = {"GraBoostRegressor":{}}
+        self.models = {
+                        "Linear_Reg": LinearRegression(),
+                        "Ridge_Reg": Ridge(),
+                        "Lasso_Reg": Lasso(),
+                        "Elastic_Net": ElasticNet(),
+                        "DTR":DecisionTreeRegressor(),
+                        "R_Forest_R": RandomForestRegressor(),
+                        "Ada_Boost_Reg": AdaBoostRegressor(),
+                        "GraBoostRegressor":GradientBoostingRegressor()
+                        }
+        self.params =  {
+                        "Linear_Reg": {},
+                        "Lasso_Reg": {"alpha": [0.01, 0.1, 1.0]},
+                        "Ridge_Reg": {"alpha": [0.1, 1.0, 10.0]},
+                        "Elastic_Net": {"alpha": [0.01, 0.1, 1.0]},
+                        "DTR":{"max_depth":[None], "min_samples_split":[2], "min_samples_leaf":[1]},
+                        "R_Forest_R":{},
+                        "Ada_Boost_Reg":{"n_estimators":[50,100,150],"learning_rate":[0.1,0.01]},
+                        "GraBoostRegressor":{}}
 
     def readData(self):
         X_test = pd.read_csv("Airtifacts\Clnd_Data\X_test.csv")
