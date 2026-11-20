@@ -1,9 +1,9 @@
 myEnv_01
-Airtifacts
-Airtifacts\Clnd_Data
-Airtifacts\pkl_TransFile
-Airtifacts\pklModels
-Airtifacts\Trans_Data
+/Airtifacts
+/Airtifacts/Clnd_Data
+/Airtifacts/pkl_TransFile
+/Airtifacts/pklModels
+/Airtifacts/Trans_Data
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
