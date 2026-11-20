@@ -26,9 +26,9 @@ project
 - Local ENV
 - STEPS
   - Training pipeline
-    - training
-    - CLEANING
-    - Transformatoin(catetorical data to Number)
+    - S0_Training_ppln.py
+    - s1_DataCleaning.py
+    - Transformatoin(catetorical data to Number) DONE (Create Obj and run it on S0_Training_ppln)
     - Training(Actaul Traing)\
   - Prediction pipeline
 

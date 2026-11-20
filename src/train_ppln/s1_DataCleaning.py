@@ -5,7 +5,7 @@ class Data_Cleaning:
      df = pd.read_csv("E:/1_Eathans/Ethans/Data/Airline/Airline1.csv")
      return df
 
-    def Handel_Missing(self,df):
+    def Handel_Missing(df):
         missin_COL = ['Source','Destination','Route','Total_Stops']
         for i in missin_COL:
             Missing = df[i].mode()[0]
@@ -15,16 +15,16 @@ class Data_Cleaning:
         df.fillna({'Price':Missing_Price},inplace=True)
         return df
 
-    def Handle_Duplicates(self,df):
+    def Handle_Duplicates(df):
         df.drop_duplicates(inplace=True)
         df[df.duplicated()]
         return df
 
-    def Replace_Uneve(self,df):
+    def Replace_Uneve(df):
         df['Destination'] = df['Destination'].replace({"New Delhi":"Delhi"})
         return df
 
-    def convertDur_Min(self,df):
+    def convertDur_Min(df):
         for i in df.index:
             ColOne = df.loc[i,'Duration'].split()[0]
             ColTwo = df.loc[i,'Duration'].split()[1]
@@ -42,7 +42,7 @@ class Data_Cleaning:
             df.loc[i,'DurHrs_Mins'] = ColOne + ColTwo
         return df
 
-    def DateTimeConverion(self,df):
+    def DateTimeConverion(df):
         df['Date_of_Journey'] = pd.to_datetime(df['Date_of_Journey'],format='mixed')
         df['D_day'] = df['Date_of_Journey'].dt.day
         df['D_month'] = df['Date_of_Journey'].dt.month
@@ -58,12 +58,12 @@ class Data_Cleaning:
         df['A_minutes'] = df['Arrival_Time'].dt.minute
         return df
 
-    def uncessaryCol(self,df):
+    def uncessaryCol(df):
         col_Drop = ['ID','Date_of_Journey','Route','Dep_Time',
                     'Arrival_Time','Duration','Additional_Info']
         df.drop(col_Drop,axis=1,inplace=True)
         return df
 
-    def saveCleanedData(self,df):
+    def saveCleanedData(df):
         file_Path = "Airtifacts/Clnd_Data/Cleaned_Data.csv"
         df.to_csv(file_Path,index=False)
