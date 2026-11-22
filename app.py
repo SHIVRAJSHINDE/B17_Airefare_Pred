@@ -20,10 +20,14 @@ def predict():
 
     cleaningObj = Data_Cleaning
     df = cleaningObj.DateTimeConverion(df)
-    print(df)
-    print(df.T)
+    df = PredictionObj.drop_Col_From_web(df)
+    df = PredictionObj.transform_web_Data(df)
+    output = PredictionObj.final_prediction(df)
 
-    return render_template("home.html",prediction_text=f"Your Flight price is Rs. {df}",)
+    # print(df)
+    # print(df.T)
+
+    return render_template("home.html",prediction_text=f"Your Flight price is Rs. {output}",)
 
 
 if __name__== "__main__":

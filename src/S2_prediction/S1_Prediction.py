@@ -44,3 +44,13 @@ class PredictionClass:
     def drop_Col_From_web(self,df):
         df = df.drop(['Date_of_Journey','Arrival_Time'],axis=1)
         return df
+
+    def transform_web_Data(self,df):
+        trans_Obj = joblib.load("Airtifacts/pkl_TransFile/trans_Obj.pkl")
+        df = trans_Obj.transform(df)
+        return df
+
+    def final_prediction(self,df):
+        Model_File = joblib.load("Airtifacts/pklModels/R_Forest_R.pkl")
+        output = Model_File.predict(df)
+        return output
