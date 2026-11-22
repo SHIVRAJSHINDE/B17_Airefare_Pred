@@ -31,6 +31,7 @@ project
     - Transformatoin(catetorical data to Number) DONE (Create Obj and run it on S0_Training_ppln)
     - Training(Actaul Traing)
   - Prediction pipeline
+    - create html page
 
 
 in case file is already pused on Git Ingonre....
