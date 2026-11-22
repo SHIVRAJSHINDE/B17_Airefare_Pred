@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flight Price Prediction</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 600px; margin: 20px auto; padding: 15px; border: 1px solid #ccc; border-radius: 8px; }
+        h3 { text-align: center; margin-top: 0; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .full-width { grid-column: span 2; }
+        label { display: block; font-weight: bold; font-size: 13px; margin-bottom: 3px; }
+        input, select, button { width: 100%; padding: 6px; box-sizing: border-box; font-size: 13px; }
+        button { background-color: #007bff; color: white; border: none; font-weight: bold; cursor: pointer; padding: 8px; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+    <h3>Flight Price Prediction</h3>
+
+    <form action="/predict" method="post" class="grid">
+        
+        <div>
+            <label>Departure Date</label>
+            <input type="datetime-local" name="Dep_Time" required>
+        </div>
+
+        <div>
+            <label>Arrival Date</label>
+            <input type="datetime-local" name="Arrival_Time" required>
+        </div>
+
+        <div>
+            <label>Source</label>
+            <select name="Source" required>
+                <option value="Banglore">Banglore</option>
+                <option value="Chennai">Chennai</option>
+                <option value="Cochin">Cochin</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Hyderabad">Hyderabad</option>
+                <option value="Kolkata">Kolkata</option>
+                <option value="Mumbai">Mumbai</option>
+            </select>
+        </div>
+
+        <div>
+            <label>Destination</label>
+            <select name="Destination" required>
+                <option value="Banglore">Banglore</option>
+                <option value="Chennai">Chennai</option>
+                <option value="Cochin">Cochin</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Hyderabad">Hyderabad</option>
+                <option value="Kolkata">Kolkata</option>
+                <option value="Mumbai">Mumbai</option>
+            </select>
+        </div>
+
+        <div>
+            <label>Stops</label>
+            <select name="Total_Stops" required>
+                <option value="non-stop">Non-stop</option>
+                <option value="1 stop">1 Stop</option>
+                <option value="2 stops">2 Stops</option>
+                <option value="3 stops">3 Stops</option>
+                <option value="4 stops">4 Stops</option>
+            </select>
+        </div>
+
+        <div>
+            <label>Airline</label>
+            <select name="Airline" required>
+                <option value="Jet Airways">Jet Airways</option>
+                <option value="IndiGo">IndiGo</option>
+                <option value="Air India">Air India</option>
+                <option value="Multiple carriers">Multiple carriers</option>
+                <option value="SpiceJet">SpiceJet</option>
+                <option value="Vistara">Vistara</option>
+                <option value="Air Asia">Air Asia</option>
+                <option value="GoAir">GoAir</option>
+                <option value="Multiple carriers Premium economy">Multiple carriers Premium economy</option>
+                <option value="Jet Airways Business">Jet Airways Business</option>
+                <option value="Vistara Premium economy">Vistara Premium economy</option>
+                <option value="Trujet">Trujet</option>
+            </select>
+        </div>
+
+        <div class="full-width">
+            <button type="submit">Predict Price</button>
+        </div>
+
+    </form>
+
+    <h4 style="text-align: center; margin-top: 15px;">{{ prediction_text }}</h4>
+
+</body>
+</html>

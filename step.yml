@@ -29,10 +29,11 @@ project
     - S0_Training_ppln.py
     - s1_DataCleaning.py
     - Transformatoin(catetorical data to Number) DONE (Create Obj and run it on S0_Training_ppln)
-    - Training(Actaul Traing) 
+    - Training(Actaul Traing)
   - Prediction pipeline
 
 
+in case file is already pused on Git Ingonre....
 
 git rm -r --cached Airtifacts
 git add .gitignore
