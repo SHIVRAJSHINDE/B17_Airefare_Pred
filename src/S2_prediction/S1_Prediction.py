@@ -25,3 +25,22 @@ class PredictionClass:
 
         df = pd.DataFrame(dictOne)
         return df
+
+    def convertArr_n_DeptTime_Duration(self,df):
+        print("_______________Duration_____________")
+
+        print(df)
+        df['Date_of_Journey'] = pd.to_datetime(df['Date_of_Journey'],format='mixed')
+        df['Arrival_Time'] = pd.to_datetime(df['Arrival_Time'],format='mixed')
+
+        total_Duration = df['Arrival_Time'] - df['Date_of_Journey']
+        print(total_Duration)
+        total_Duration = total_Duration.dt.total_seconds() / 60
+
+        df['DurHrs_Mins'] = total_Duration.astype(int)
+        print("------Duration-S-Completed")
+        return df
+
+    def drop_Col_From_web(self,df):
+        df = df.drop(['Date_of_Journey','Arrival_Time'],axis=1)
+        return df
