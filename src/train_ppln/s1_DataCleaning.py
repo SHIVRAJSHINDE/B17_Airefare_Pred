@@ -64,6 +64,50 @@ class Data_Cleaning:
         df.drop(col_Drop,axis=1,inplace=True)
         return df
 
+    def remove_Outlier(df):
+        df['Airline'].unique()
+        airlineName = { 'IndiGo':      [0.25,0.75],
+                        "Air India":   [0.27,0.75],
+                        'Jet Airways': [0.27,0.75],
+                        'SpiceJet':    [0.10,0.60],
+                        'Multiple carriers':[0.20,0.80],
+                        'GoAir':       [0.20,0.75],
+                        'Vistara':     [0.20,0.75],
+                        'Air Asia':    [0.25,0.75],
+                        'Vistara Premium economy':[0.25,0.75],
+                        'Jet Airways Business':[0.25,0.75],
+                        'Multiple carriers Premium economy':[0.20,0.75],
+                        'Trujet':       [0,0]
+
+                    }
+
+
+        final_df = pd.DataFrame(columns=list(df.columns))
+        for key,value in airlineName.items():
+            airDataSet = ""
+            airDataSet = df[df['Airline'] == key]
+
+            q1 = airDataSet['Price'].quantile(value[0])
+            q3 = airDataSet['Price'].quantile(value[1])
+            IQR = q3-q1
+            lowerLimit = q1-IQR*1.5
+            upperLimit = q3+IQR*1.5
+            lowerLimitIndex = airDataSet[airDataSet['Price']<=lowerLimit].index
+            upperLimitIndex = airDataSet[airDataSet['Price']>=upperLimit].index
+
+            if airDataSet.shape[0] > 5 : 
+                airDataSet.drop(lowerLimitIndex,axis=0,inplace=True)
+                airDataSet.drop(upperLimitIndex,axis=0,inplace=True)
+            else:
+                pass
+
+            df[df.index.isin([2878])]
+            #airDataSet1 = airDataSet1.append(airDataSet, ignore_index=True)  # ignore_index=True resets the index
+            final_df = pd.concat([final_df, airDataSet], axis=0)  # axis=0 is the default and means appending vertically
+            df = final_df
+            return df
+
+
     def saveCleanedData(df):
         file_Path = "Airtifacts/Clnd_Data/Cleaned_Data.csv"
         df.to_csv(file_Path,index=False)
